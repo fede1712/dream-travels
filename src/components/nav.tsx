@@ -1,4 +1,8 @@
-export const Nav = () => {
+export const Nav = ({
+  setIsCreateTripModalOpen,
+}: {
+  setIsCreateTripModalOpen: (isCreateTripModalOpen: boolean) => void;
+}) => {
   return (
     <nav className="bg-black flex justify-between items-center p-4 rounded-3xl text-white mt-10 mx-10">
       <div className="rounded-full bg-white p-2 flex items-center justify-between w">
@@ -10,7 +14,9 @@ export const Nav = () => {
           />
         </svg>
       </div>
-      <button className="bg-white rounded-full p-2 text-black">Create new trip</button>
+      <button className="bg-white rounded-full p-2 text-black" onClick={() => setIsCreateTripModalOpen(true)}>
+        Create new trip
+      </button>
     </nav>
   );
 };

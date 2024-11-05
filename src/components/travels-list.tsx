@@ -5,6 +5,7 @@ import { TravelComponent } from "./travel-component";
 import { TavelsFiltersButtons } from "./travel-filters-buttons";
 import { useEffect, useState } from "react";
 import { SearchBar } from "./search-bar";
+import { Skeleton } from "./skeleton";
 
 export const TravelsList = () => {
   const [data, setData] = useState([]);
@@ -35,9 +36,11 @@ export const TravelsList = () => {
 
       <div className="flex flex-col gap-10 mt-10">
         <TavelsFiltersButtons setStatus={setStatus} status={status} setSearchTerm={setSearchTerm} />
-        {filteredTrips.map((travel: Travel, idx: number) => (
-          <TravelComponent travel={travel} key={idx} />
-        ))}
+        {filteredTrips.length > 0 ? (
+          filteredTrips.map((travel: Travel, idx: number) => <TravelComponent travel={travel} key={idx} />)
+        ) : (
+          <Skeleton />
+        )}
       </div>
     </>
   );
