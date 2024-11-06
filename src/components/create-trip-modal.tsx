@@ -1,27 +1,80 @@
 "use client";
-
 import { useEffect, useState } from "react";
 import { ItineraryForm } from "./itinerary-form";
+import { Trip } from "@/types/trip.type";
 
 export const CreateTripModal = ({
   isCreateTripModalOpen,
   setIsCreateTripModalOpen,
+  setData,
+  trips,
 }: {
   isCreateTripModalOpen: boolean;
   setIsCreateTripModalOpen: (isCreateTripModalOpen: boolean) => void;
+  setData: React.Dispatch<React.SetStateAction<Trip[]>>;
+  trips: Trip[];
 }) => {
+  const [newTrip, setNewTrip] = useState<Trip>({
+    id: 0,
+    status: "todo",
+    title: "",
+    description: "",
+    photo_url: "",
+    itinerary: [],
+  });
+
   const [itineraryDaysForm, setItineraryDaysForm] = useState<JSX.Element[]>([
-    <ItineraryForm itineraryDaysFormLength={0} key={0} />,
+    <ItineraryForm itineraryDaysFormLength={0} key={0} actualTrip={newTrip} setActualTrip={setNewTrip} />,
   ]);
 
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault();
+  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
+    const { id, value } = e.target;
+    setNewTrip((prevTrip) => ({
+      ...prevTrip,
+      [id]: value,
+    }));
+  };
+
+  const handleSubmit = () => {
+    const maxId = trips.reduce((max, trip) => (trip.id > max ? trip.id : max), 0);
+    const newId = maxId + 1;
+    const tripWithId = { ...newTrip, id: newId };
+
+    setData((prevData) => [...prevData, tripWithId]);
+
     setIsCreateTripModalOpen(false);
+  };
+
+  const addItineraryDay = () => {
+    setNewTrip((prevTrip) => ({
+      ...prevTrip,
+      itinerary: [...prevTrip.itinerary, { day: prevTrip.itinerary.length + 1, location: "", description: "" }],
+    }));
+
+    setItineraryDaysForm((prevElements) => [
+      ...prevElements,
+      <ItineraryForm
+        key={itineraryDaysForm.length}
+        itineraryDaysFormLength={itineraryDaysForm.length + 1}
+        actualTrip={newTrip}
+        setActualTrip={setNewTrip}
+      />,
+    ]);
   };
 
   useEffect(() => {
     if (!isCreateTripModalOpen) {
-      setItineraryDaysForm([<ItineraryForm itineraryDaysFormLength={0} key={0} />]);
+      setItineraryDaysForm([
+        <ItineraryForm itineraryDaysFormLength={0} key={0} actualTrip={newTrip} setActualTrip={setNewTrip} />,
+      ]);
+      setNewTrip({
+        id: 0,
+        status: "todo",
+        title: "",
+        description: "",
+        photo_url: "",
+        itinerary: [],
+      });
     }
   }, [isCreateTripModalOpen]);
 
@@ -49,27 +102,22 @@ export const CreateTripModal = ({
               Name
             </label>
             <input
+              required
+              onChange={handleChange}
               type="text"
-              id="name"
+              id="title"
               placeholder="Italy"
               className="border border-gray-300 rounded-full p-2 w-full"
             />
           </div>
+
           <div className="mb-4">
-            <label className="block text-sm mb-2" htmlFor="name">
-              Introduction (max. 240 characters)
-            </label>
-            <textarea
-              id="introduction"
-              placeholder="From Rome to Venice..."
-              className="border border-gray-300 rounded-2xl p-2 w-full h-24"
-            />
-          </div>
-          <div className="mb-4">
-            <label className="block text-sm mb-2" htmlFor="name">
+            <label className="block text-sm mb-2" htmlFor="description">
               Description
             </label>
             <textarea
+              required
+              onChange={handleChange}
               id="description"
               placeholder="Discover the wonders of the Roman empire..."
               className="border border-gray-300 rounded-2xl p-2 w-full h-32"
@@ -77,27 +125,21 @@ export const CreateTripModal = ({
           </div>
 
           <div className="mb-4">
-            <label className="block text-sm mb-2 " htmlFor="name">
+            <label className="block text-sm mb-2" htmlFor="photo_url">
               Image
             </label>
             <input
+              required
+              onChange={handleChange}
               type="text"
-              id="image"
+              id="photo_url"
               placeholder="Image URL"
               className="border border-gray-300 rounded-full p-2 w-full"
             />
           </div>
-          <label className="text-sm mb-2 flex justify-between items-center" htmlFor="name">
+          <label className="text-sm mb-2 flex justify-between items-center" htmlFor="itinerary">
             <p>Day by day itinerary</p>
-            <button
-              type="button"
-              onClick={() =>
-                setItineraryDaysForm((prevElements) => [
-                  ...prevElements,
-                  <ItineraryForm itineraryDaysFormLength={itineraryDaysForm.length} key={itineraryDaysForm.length} />,
-                ])
-              }
-            >
+            <button type="button" onClick={addItineraryDay}>
               <svg width="21" height="21" viewBox="0 0 21 21" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M10.5 19.25C15.3325 19.25 19.25 15.3325 19.25 10.5C19.25 5.66751 15.3325 1.75 10.5 1.75C5.66751 1.75 1.75 5.66751 1.75 10.5C1.75 15.3325 5.66751 19.25 10.5 19.25Z"
@@ -112,14 +154,15 @@ export const CreateTripModal = ({
             </button>
           </label>
           {itineraryDaysForm.map((_, idx) => (
-            <ItineraryForm itineraryDaysFormLength={idx + 1} key={idx} />
+            <ItineraryForm
+              key={idx}
+              itineraryDaysFormLength={idx + 1}
+              actualTrip={newTrip}
+              setActualTrip={setNewTrip}
+            />
           ))}
 
-          <button
-            type="submit"
-            className="bg-black text-white rounded-full px-10 py-2"
-            onClick={() => setIsCreateTripModalOpen(false)}
-          >
+          <button type="submit" className="bg-black text-white rounded-full px-10 py-2">
             Save
           </button>
         </form>

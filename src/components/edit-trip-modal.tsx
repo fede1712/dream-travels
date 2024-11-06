@@ -21,7 +21,7 @@ export const EditTripModal = ({
     <ItineraryForm itineraryDaysFormLength={0} key={0} />,
   ]);
 
-  const handleSubmit = (e: React.FormEvent) => {
+  const handleSubmit = () => {
     setData((prevData: Trip[]) => {
       return prevData.map((t) => (t.id === trip.id ? { ...t, ...actualTrip } : t));
     });
@@ -53,6 +53,7 @@ export const EditTripModal = ({
               Name
             </label>
             <input
+              required
               value={actualTrip.title}
               type="text"
               id="name"
@@ -66,6 +67,7 @@ export const EditTripModal = ({
               Description
             </label>
             <textarea
+              required
               value={actualTrip.description}
               onChange={(e) => setActualTrip({ ...actualTrip, description: e.target.value })}
               id="description"
@@ -79,6 +81,7 @@ export const EditTripModal = ({
               Image
             </label>
             <input
+              required
               value={actualTrip.photo_url}
               onChange={(e) => setActualTrip({ ...actualTrip, photo_url: e.target.value })}
               type="text"
