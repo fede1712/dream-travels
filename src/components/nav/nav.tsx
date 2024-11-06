@@ -14,7 +14,11 @@ export const Nav = ({
           />
         </svg>
       </div>
-      <button className="bg-white rounded-full p-2 text-black" onClick={() => setIsCreateTripModalOpen(true)}>
+      <button
+        className="bg-white rounded-full p-2 text-black"
+        onClick={() => setIsCreateTripModalOpen(true)}
+        role="create-trip-button"
+      >
         Create new trip
       </button>
     </nav>

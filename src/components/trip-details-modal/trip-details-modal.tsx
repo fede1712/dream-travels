@@ -1,5 +1,5 @@
 import { Trip } from "@/types/trip.type";
-import { Itinerary } from "../types/trip.type";
+import { Itinerary } from "../../types/trip.type";
 
 export const TripDetailsModal = ({
   isTripDetailsModalOpen,

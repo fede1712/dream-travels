@@ -1,8 +1,8 @@
 "use client";
 import { Trip } from "@/types/trip.type";
-import { TripComponent } from "./trip-component";
-import { TripsFiltersButtons } from "./trips-filters-buttons";
-import { SearchBar } from "./search-bar";
+import { TripComponent } from "../trip-component/trip-component";
+import { TripsFiltersButtons } from "../trips-filters-buttons/trips-filters-buttons";
+import { SearchBar } from "../search-bar/search-bar";
 
 export const TripsList = ({
   setData,

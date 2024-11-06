@@ -1,9 +1,9 @@
 "use client";
-import { CreateTripModal } from "@/components/create-trip-modal";
-import { Hero } from "@/components/hero";
-import { Nav } from "@/components/nav";
-import { Skeleton } from "@/components/skeleton";
-import { TripsList } from "@/components/trips-list";
+import { CreateTripModal } from "@/components/create-trip-modal/create-trip-modal";
+import { Hero } from "@/components/hero/hero";
+import { Nav } from "@/components/nav/nav";
+import { Skeleton } from "@/components/skeleton/skeleton";
+import { TripsList } from "@/components/trips-list/trips-list";
 import { getDreamsTravelsData } from "@/lib/getDreamsTravelsData";
 import { Trip } from "@/types/trip.type";
 import { useEffect, useState, Suspense } from "react";

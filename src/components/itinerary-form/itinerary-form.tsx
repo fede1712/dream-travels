@@ -28,6 +28,7 @@ export const ItineraryForm = ({
     <div className="mb-4">
       <div className="grid grid-cols-6 bg-[#F3F3F3] rounded-2xl p-4 gap-4">
         <select
+          role="select-day"
           required
           name="day"
           id="day"
@@ -43,6 +44,7 @@ export const ItineraryForm = ({
         </select>
         <div className="col-span-4 grid grid-cols-2 gap-2">
           <input
+            role="intinerary-location"
             required
             type="text"
             placeholder="Location"
@@ -51,6 +53,7 @@ export const ItineraryForm = ({
             onChange={(e) => handleChange("location", e.target.value)}
           />
           <textarea
+            role="intinerary-description"
             required
             placeholder="Description"
             className="rounded-2xl w-full col-span-4 p-2 text-black h-52"

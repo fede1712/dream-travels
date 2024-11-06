@@ -1,6 +1,6 @@
 import { Itinerary, Trip } from "@/types/trip.type";
 import { useState } from "react";
-import { ItineraryForm } from "./itinerary-form";
+import { ItineraryForm } from "../itinerary-form/itinerary-form";
 
 export const EditTripModal = ({
   isEditTripModalOpen,
@@ -36,7 +36,11 @@ export const EditTripModal = ({
       <div className="bg-white mx-10 rounded-2xl p-6 shadow-lg sm:w-5/12 max-h-[90vh] overflow-y-auto my-10">
         <div className="flex justify-between items-center mb-6 bg-white">
           <h2 className="text-[32px]">Edit a trip</h2>
-          <button onClick={() => setIsEditTripModalOpen(false)} className="rounded-full p-2 text-black">
+          <button
+            onClick={() => setIsEditTripModalOpen(false)}
+            className="rounded-full p-2 text-black"
+            role="close-button"
+          >
             <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
                 d="M0 14C0 6.26801 6.26801 0 14 0C21.732 0 28 6.26801 28 14C28 21.732 21.732 28 14 28C6.26801 28 0 21.732 0 14Z"
@@ -93,6 +97,7 @@ export const EditTripModal = ({
           <label className="text-sm mb-2 flex justify-between items-center" htmlFor="name">
             <p>Day by day itinerary</p>
             <button
+              role="add-button"
               type="button"
               onClick={() =>
                 setItineraryDaysForm((prevElements) => [
@@ -124,7 +129,12 @@ export const EditTripModal = ({
             />
           ))}
 
-          <button type="submit" className="bg-black text-white rounded-full px-10 py-2">
+          <button
+            type="submit"
+            className="bg-black text-white rounded-full px-10 py-2"
+            role="submit-button"
+            onClick={handleSubmit}
+          >
             Save
           </button>
         </form>

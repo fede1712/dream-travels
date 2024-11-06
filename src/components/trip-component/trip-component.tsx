@@ -1,9 +1,9 @@
 "use client";
 import { Trip } from "@/types/trip.type";
-import { TripButtons } from "./trip-button";
-import { TripDetailsModal } from "./trip-details-modal";
+import { TripButtons } from "../trip-button/trip-button";
+import { TripDetailsModal } from "../trip-details-modal/trip-details-modal";
 import { useState } from "react";
-import { EditTripModal } from "./edit-trip-modal";
+import { EditTripModal } from "../edit-trip-modal/edit-trip-modal";
 
 export const TripComponent = ({
   trip,

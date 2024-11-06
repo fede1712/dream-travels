@@ -18,8 +18,13 @@ export const SearchBar = ({ setSearchTerm }: { setSearchTerm: (searchTerm: strin
         type="text"
         onChange={(e) => setTerm(e.target.value)}
         onKeyDown={handleKeyPress}
+        role="search-input"
       />
-      <button className="bg-black text-white rounded-full py-2 px-4" onClick={() => setSearchTerm(term)}>
+      <button
+        className="bg-black text-white rounded-full py-2 px-4"
+        onClick={() => setSearchTerm(term)}
+        role="search-button"
+      >
         Search
       </button>
     </div>
