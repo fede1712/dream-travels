@@ -76,6 +76,7 @@ export const CreateTripModal = ({
         itinerary: [],
       });
     }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [isCreateTripModalOpen]);
 
   if (!isCreateTripModalOpen) return null;
