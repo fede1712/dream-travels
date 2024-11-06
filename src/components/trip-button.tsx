@@ -2,10 +2,12 @@ import { Trip } from "@/types/trip.type";
 
 export const TripButtons = ({
   setIsTripDetailsModalOpen,
+  setIsEditTripModalOpen,
   setData,
   tripId,
 }: {
   setIsTripDetailsModalOpen: (isTripDetailsModalOpen: boolean) => void;
+  setIsEditTripModalOpen: (isEditTripModalOpen: boolean) => void;
   setData: React.Dispatch<React.SetStateAction<Trip[]>>;
   tripId: number;
 }) => {
@@ -18,7 +20,9 @@ export const TripButtons = ({
       </button>
 
       <div className="flex gap-10 underline">
-        <button className="underline">Edit</button>
+        <button className="underline" onClick={() => setIsEditTripModalOpen(true)}>
+          Edit
+        </button>
         <button className="text-[#C93957] underline" onClick={handleDelete}>
           Delete
         </button>
