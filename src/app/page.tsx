@@ -34,7 +34,7 @@ export default function Home() {
   return (
     <>
       <Nav setIsCreateTripModalOpen={setIsCreateTripModalOpen} />
-      <main className="flex flex-col items-center justify-center gap-10">
+      <main className="flex flex-col items-center justify-center gap-10 m-auto md:px-12 sm:max-w-sm md:max-w-4xl xl:max-w-7xl">
         <Hero />
         <TripsList
           setData={setData}

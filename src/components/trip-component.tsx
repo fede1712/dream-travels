@@ -17,8 +17,8 @@ export const TripComponent = ({
 
   return (
     <>
-      <div className="grid grid-cols-2 justify-between border border-[#D8D8D8] rounded-2xl gap-10 mx-32 mb-10">
-        <img src={trip.photo_url} alt={trip.title} className="h-full object-cover rounded-l-2xl" />
+      <div className="grid mx-4 sm:grid-cols-2 justify-between border border-[#D8D8D8] rounded-2xl gap-10 sm:mx-20 mb-10">
+        <img src={trip.photo_url} alt={trip.title} className="h-full object-cover sm:rounded-l-2xl rounded-t-2xl" />
         <div className="px-10 py-10">
           <h2 className="text-[24px] leading-[30px]">{trip.title}</h2>
           <p className="text-[16px] leading-[24px] mt-4">{trip.description}</p>

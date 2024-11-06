@@ -22,7 +22,7 @@ export const TripDetailsModal = ({
   if (!isTripDetailsModalOpen) return null;
 
   return (
-    <div className="fixed inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+    <div className="fixed px-2 inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
       <div className="bg-white rounded-2xl shadow-lg sm:w-7/12 max-h-[90vh] overflow-y-auto my-10">
         <div className="relative">
           <img
@@ -102,21 +102,24 @@ export const TripDetailsModal = ({
           <p>{trip.description}</p>
           <span className="border h-0.5 w-full rounded-full bg-[#D8D8D8] my-10" />
           <h3 className="text-[24px] leading-[30px]">Itinerary</h3>
-          <div className="relative ml-4">
-            {trip.itinerary.map((itinerary: Itinerary, idx: number) => (
-              <div key={idx} className="flex items-start gap-3 mb-6 relative">
-                {idx !== trip.itinerary.length - 1 && (
-                  <div className="absolute h-[100px] w-0.5 bg-black left-[5px] top-2" />
-                )}
-                <div className="h-3 w-3 rounded-full bg-black flex-shrink-0 mt-1" />
-                <div>
-                  <p className="">
-                    Day {idx + 1}: {itinerary.location}
-                  </p>
-                  <p className="text-[#898989] ml-2">{itinerary.description}</p>
-                </div>
+          <div className="max-w-2xl mx-auto p-6">
+            <div className="relative">
+              <div className="absolute left-[1%] sm:left-[0.5%] top-4 h-[calc(100%-2rem)] border-[0.5px] border-l-2  border-black" />
+              <div className="space-y-8">
+                {trip.itinerary.map((itinerary: Itinerary, idx: number) => (
+                  <div key={idx} className="relative pl-10">
+                    <div className="absolute left-0 top-2 h-2 w-2 rounded-full bg-black" />
+
+                    <div>
+                      <p>
+                        Day {idx + 1}: {itinerary.location}
+                      </p>
+                      <p className="text-gray-600">{itinerary.description}</p>
+                    </div>
+                  </div>
+                ))}
               </div>
-            ))}
+            </div>
           </div>
         </div>
       </div>
