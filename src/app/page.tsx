@@ -2,10 +2,11 @@
 import { CreateTripModal } from "@/components/create-trip-modal";
 import { Hero } from "@/components/hero";
 import { Nav } from "@/components/nav";
+import { Skeleton } from "@/components/skeleton";
 import { TripsList } from "@/components/trips-list";
 import { getDreamsTravelsData } from "@/lib/getDreamsTravelsData";
 import { Trip } from "@/types/trip.type";
-import { useEffect, useState } from "react";
+import { useEffect, useState, Suspense } from "react";
 
 export default function Home() {
   const [isCreateTripModalOpen, setIsCreateTripModalOpen] = useState(false);
@@ -36,13 +37,15 @@ export default function Home() {
       <Nav setIsCreateTripModalOpen={setIsCreateTripModalOpen} />
       <main className="flex flex-col items-center justify-center gap-10 m-auto md:px-12 sm:max-w-sm md:max-w-4xl xl:max-w-7xl">
         <Hero />
-        <TripsList
-          setData={setData}
-          filteredTrips={filteredTrips}
-          setSearchTerm={setSearchTerm}
-          status={status}
-          setStatus={setStatus}
-        />
+        <Suspense fallback={<Skeleton />}>
+          <TripsList
+            setData={setData}
+            filteredTrips={filteredTrips}
+            setSearchTerm={setSearchTerm}
+            status={status}
+            setStatus={setStatus}
+          />
+        </Suspense>
       </main>
       <CreateTripModal
         isCreateTripModalOpen={isCreateTripModalOpen}
