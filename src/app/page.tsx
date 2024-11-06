@@ -2,7 +2,7 @@
 import { CreateTripModal } from "@/components/create-trip-modal";
 import { Hero } from "@/components/hero";
 import { Nav } from "@/components/nav";
-import { TravelsList } from "@/components/travels-list";
+import { TripsList } from "@/components/trips-list";
 import { useState } from "react";
 
 export default function Home() {
@@ -13,7 +13,7 @@ export default function Home() {
       <Nav setIsCreateTripModalOpen={setIsCreateTripModalOpen} />
       <main className="flex flex-col items-center justify-center gap-10">
         <Hero />
-        <TravelsList />
+        <TripsList />
       </main>
       <CreateTripModal
         isCreateTripModalOpen={isCreateTripModalOpen}

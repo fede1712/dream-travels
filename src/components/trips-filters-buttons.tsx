@@ -1,6 +1,6 @@
 "use client";
 
-export const TavelsFiltersButtons = ({
+export const TripsFiltersButtons = ({
   setStatus,
   status,
   setSearchTerm,
