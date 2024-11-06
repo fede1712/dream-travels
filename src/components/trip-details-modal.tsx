@@ -12,8 +12,8 @@ export const TripDetailsModal = ({
   trip: Trip;
   setData: React.Dispatch<React.SetStateAction<Trip[]>>;
 }) => {
-  const markAsCompleted = () => {
-    const updatedTrip = { ...trip, status: "done" };
+  const changeStatus = (status: string) => {
+    const updatedTrip = { ...trip, status: status };
     setData((prevData: Trip[]) => {
       return prevData.map((t) => (t.id === trip.id ? updatedTrip : t));
     });
@@ -47,7 +47,7 @@ export const TripDetailsModal = ({
         <div className="flex flex-col gap-5 px-10 py-10">
           <h2 className="text-[32px]">{trip.title}</h2>
           {trip.status === "todo" ? (
-            <button className="flex gap-2 w-fit" onClick={markAsCompleted}>
+            <button className="flex gap-2 w-fit" onClick={() => changeStatus("done")}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M11.25 14.25L9 12"
@@ -76,7 +76,7 @@ export const TripDetailsModal = ({
               <p className="text-[#898989]">Mark as completed</p>
             </button>
           ) : (
-            <div className="flex gap-2 w-fit">
+            <button className="flex gap-2 w-fit" onClick={() => changeStatus("todo")}>
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle
                   cx="12"
@@ -97,7 +97,7 @@ export const TripDetailsModal = ({
                 />
               </svg>
               <p className="text-[#898989]">Complete</p>
-            </div>
+            </button>
           )}
           <p>{trip.description}</p>
           <span className="border h-0.5 w-full rounded-full bg-[#D8D8D8] my-10" />
