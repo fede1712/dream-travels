@@ -1,36 +1,63 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# DREAM TRAVELS
 
-## Getting Started
+We are thrilled to introduce you to our new adventure: Dream Travels! Here, we are not just building an application but the perfect place to bring your travel dreams to life. Imagine a space where you can organise your desired destinations and keep a record of those unforgettable moments that have already brought a smile to your face! Dream Travels is your space to add wild destinations and keep the flame of your past adventures alive. It's like your own dream journal, but with a passport! Get ready to bring to life those destinations you've always wished for. Welcome to Dream Travels, where your travel dreams become a reality.
 
-First, run the development server:
+Production URL: [Dream travels](https://dream-travels-navy.vercel.app/)
+
+## Starting
+
+1. Clone the repository ⚡️:
+
+```bash
+git clone https://github.com/fede1712/dream-travels.git
+```
+
+2. Install the dependencies 💻:
+
+```bash
+npm install
+```
+
+## Running the development server 🚀:
+
+To run the development server 🚀:
 
 ```bash
 npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+```
+
+To run the production server, first we need to build the project 🧱🔨:
+
+```bash
+npm run build
+```
+
+Now we can run the production server 🚀:
+
+```bash
+npm run start
 ```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## Choosen tech stack
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+- Next.js
+- Tailwind CSS
+- TypeScript
+- ESLint
 
-## Learn More
+## Project structure
 
-To learn more about Next.js, take a look at the following resources:
+```
+.
+├── README.md
+├── src
+│   ├── app
+│   ├── components
+│   ├── hooks
+│   ├── lib
+│   ├── mocks
+│   ├── types
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+```
