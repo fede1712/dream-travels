@@ -57,8 +57,8 @@ describe("Edit trip modal component", () => {
     const addButton = screen.getByRole("add-button");
     fireEvent.click(addButton);
 
-    expect(screen.getAllByRole("intinerary-location")).toHaveLength(2);
-    expect(screen.getAllByRole("intinerary-description")).toHaveLength(2);
+    expect(screen.getAllByRole("intinerary-location")).toHaveLength(3);
+    expect(screen.getAllByRole("intinerary-description")).toHaveLength(3);
   });
 
   it("should submit the form correctly", () => {
