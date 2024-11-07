@@ -2,6 +2,7 @@
 import { CreateTripModal } from "@/components/create-trip-modal/create-trip-modal";
 import { Hero } from "@/components/hero/hero";
 import { Nav } from "@/components/nav/nav";
+import { RandomTripButton } from "@/components/random-trip-button/random-trip-button";
 import { Skeleton } from "@/components/skeleton/skeleton";
 import { TripsList } from "@/components/trips-list/trips-list";
 import { getDreamsTravelsData } from "@/lib/getDreamsTravelsData";
@@ -37,6 +38,7 @@ export default function Home() {
       <Nav setIsCreateTripModalOpen={setIsCreateTripModalOpen} />
       <main className="flex flex-col items-center justify-center gap-10 m-auto md:px-12 sm:max-w-sm md:max-w-4xl xl:max-w-7xl">
         <Hero />
+        <RandomTripButton filteredTrips={filteredTrips} />
         <Suspense fallback={<Skeleton />}>
           <TripsList
             setData={setData}
