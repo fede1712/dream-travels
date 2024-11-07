@@ -42,7 +42,7 @@ const CountdownTimer = () => {
   }, []);
 
   return (
-    <div className="flex flex-col justify-center items-center gap-2 mb-10">
+    <div className="flex flex-col justify-center items-center gap-2 mb-10" role="countdown-timer">
       <p className="font-bold">Are you ready?</p>
       <p className="flex gap-2 items-center">
         {timeLeft.days} days, {timeLeft.hours} hours, {timeLeft.minutes} minutes, {timeLeft.seconds} seconds

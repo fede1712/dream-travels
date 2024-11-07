@@ -1,20 +1,13 @@
-import { Trip } from "@/types/trip.type";
 import "@testing-library/jest-dom";
 import { EditTripModal } from "../edit-trip-modal";
 import { fireEvent, render, screen } from "@testing-library/react";
 import userEvent from "@testing-library/user-event";
+import { filteredTripsMock } from "@/mocks/filtered-trips.mock";
 
 describe("Edit trip modal component", () => {
   const setIsEditTripModalOpen = jest.fn();
   const setData = jest.fn();
-  const trip: Trip = {
-    description: "A wonderful trip exploring Cádiz.",
-    id: 0,
-    itinerary: [{ day: 0, description: "", location: "" }],
-    photo_url: "image.jpg",
-    status: "todo",
-    title: "Cádiz",
-  };
+  const trip = filteredTripsMock[0];
 
   it("should render the modal when open", () => {
     render(
@@ -27,9 +20,9 @@ describe("Edit trip modal component", () => {
     );
 
     expect(screen.getByText("Edit a trip")).toBeInTheDocument();
-    expect(screen.getByDisplayValue("Cádiz")).toBeInTheDocument();
-    expect(screen.getByDisplayValue("A wonderful trip exploring Cádiz.")).toBeInTheDocument();
-    expect(screen.getByDisplayValue("image.jpg")).toBeInTheDocument();
+    expect(screen.getByDisplayValue("Trip 1")).toBeInTheDocument();
+    expect(screen.getByDisplayValue("Description 1")).toBeInTheDocument();
+    expect(screen.getByDisplayValue("image-trip-1.jpg")).toBeInTheDocument();
   });
 
   it("should close the modal when clicking the close button", () => {
@@ -58,14 +51,14 @@ describe("Edit trip modal component", () => {
       />
     );
 
-    expect(screen.getAllByRole("intinerary-location")).toHaveLength(1);
-    expect(screen.getAllByRole("intinerary-description")).toHaveLength(1);
+    expect(screen.getAllByRole("intinerary-location")).toHaveLength(2);
+    expect(screen.getAllByRole("intinerary-description")).toHaveLength(2);
 
     const addButton = screen.getByRole("add-button");
     fireEvent.click(addButton);
 
-    expect(screen.getAllByRole("intinerary-location")).toHaveLength(1);
-    expect(screen.getAllByRole("intinerary-description")).toHaveLength(1);
+    expect(screen.getAllByRole("intinerary-location")).toHaveLength(2);
+    expect(screen.getAllByRole("intinerary-description")).toHaveLength(2);
   });
 
   it("should submit the form correctly", () => {
@@ -78,16 +71,16 @@ describe("Edit trip modal component", () => {
       />
     );
 
-    const titleInput = screen.getByDisplayValue("Cádiz");
-    const descriptionInput = screen.getByDisplayValue("A wonderful trip exploring Cádiz.");
-    const imageInput = screen.getByDisplayValue("image.jpg");
-    const submitButton = screen.getByRole("submit-button");
+    const titleInput = screen.getByDisplayValue("Trip 1");
+    const descriptionInput = screen.getByDisplayValue("Description 1");
+    const imageInput = screen.getByDisplayValue("image-trip-1.jpg");
+    const form = screen.getByRole("form");
 
     userEvent.type(titleInput, "Sevilla");
     userEvent.type(descriptionInput, "A wonderful trip exploring Sevila.");
     userEvent.type(imageInput, "sevilla-image.jpg");
 
-    fireEvent.click(submitButton);
+    fireEvent.submit(form);
 
     expect(setData).toHaveBeenCalled();
 

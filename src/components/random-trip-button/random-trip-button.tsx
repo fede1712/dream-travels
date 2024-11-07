@@ -36,7 +36,11 @@ export const RandomTripButton = ({ filteredTrips }: { filteredTrips: Trip[] }) =
         {!randomTrip ? (
           <>
             <h3>Don’t know where to go?</h3>
-            <button className="bg-black text-white rounded-full py-2 px-4" onClick={getRandomTrip}>
+            <button
+              className="bg-black text-white rounded-full py-2 px-4"
+              onClick={getRandomTrip}
+              role="get-random-trip-button"
+            >
               Get random trip!
             </button>
           </>

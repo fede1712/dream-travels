@@ -1,33 +1,11 @@
 import "@testing-library/jest-dom";
 import { render, screen } from "@testing-library/react";
 import { TripsList } from "../trips-list";
+import { filteredTripsMock } from "@/mocks/filtered-trips.mock";
 
 describe("Trips list component", () => {
   const setData = jest.fn();
-  const filteredTrips = [
-    {
-      id: 1,
-      title: "Trip title 1",
-      description: "Trip description 1",
-      photo_url: "trip-image-url-1",
-      status: "done",
-      itinerary: [
-        { day: 1, location: "Location 1", description: "Description 1" },
-        { day: 2, location: "Location 2", description: "Description 2" },
-      ],
-    },
-    {
-      id: 2,
-      title: "Trip title 2",
-      description: "Trip description 2",
-      photo_url: "trip-image-url-2",
-      status: "todo",
-      itinerary: [
-        { day: 1, location: "Location 1", description: "Description 1" },
-        { day: 2, location: "Location 2", description: "Description 2" },
-      ],
-    },
-  ];
+  const filteredTrips = filteredTripsMock;
   const setSearchTerm = jest.fn();
   const setStatu = jest.fn();
 
@@ -51,10 +29,10 @@ describe("Trips list component", () => {
     expect(screen.getByRole("show-done-trips-button")).toBeInTheDocument();
     expect(screen.getAllByRole("trip-component")[0]).toBeInTheDocument();
     expect(screen.getAllByRole("trip-component")[1]).toBeInTheDocument();
-    expect(screen.getByText("Trip title 1")).toBeInTheDocument();
-    expect(screen.getByText("Trip title 2")).toBeInTheDocument();
-    expect(screen.getByText("Trip description 1")).toBeInTheDocument();
-    expect(screen.getByText("Trip description 2")).toBeInTheDocument();
+    expect(screen.getByText("Trip 1")).toBeInTheDocument();
+    expect(screen.getByText("Trip 2")).toBeInTheDocument();
+    expect(screen.getByText("Description 1")).toBeInTheDocument();
+    expect(screen.getByText("Description 2")).toBeInTheDocument();
     expect(screen.getAllByRole("trip-buttons")[0]).toBeInTheDocument();
     expect(screen.getAllByRole("trip-buttons")[1]).toBeInTheDocument();
     expect(screen.getAllByRole("trip-details-button")[0]).toBeInTheDocument();

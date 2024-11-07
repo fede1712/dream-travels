@@ -42,7 +42,6 @@ export const RandomTripModal = ({
         <div className="flex flex-col gap-5 px-10 py-10">
           <h2 className="text-[32px]">{randomTrip?.title}</h2>
           <CountdownTimer />
-
           <p>{randomTrip?.description}</p>
           <span className="border h-0.5 w-full rounded-full bg-[#D8D8D8] my-10" />
           <h3 className="text-[24px] leading-[30px]">Itinerary</h3>

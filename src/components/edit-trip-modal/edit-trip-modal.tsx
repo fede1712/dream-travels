@@ -22,9 +22,7 @@ export const EditTripModal = ({
   ]);
 
   const handleSubmit = () => {
-    setData((prevData: Trip[]) => {
-      return prevData.map((t) => (t.id === trip.id ? { ...t, ...actualTrip } : t));
-    });
+    setData((prevData: Trip[]) => prevData.map((t) => (t.id === trip.id ? { ...t, ...actualTrip } : t)));
 
     setIsEditTripModalOpen(false);
   };
@@ -51,7 +49,7 @@ export const EditTripModal = ({
             </svg>
           </button>
         </div>
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} role="form">
           <div className="mb-4">
             <label className="block text-sm mb-2" htmlFor="name">
               Name

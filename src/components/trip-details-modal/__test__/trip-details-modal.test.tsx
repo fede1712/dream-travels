@@ -1,32 +1,12 @@
 import "@testing-library/jest-dom";
 import { fireEvent, render, screen } from "@testing-library/react";
 import { TripDetailsModal } from "../trip-details-modal";
+import { filteredTripsMock } from "@/mocks/filtered-trips.mock";
 
 describe("Trip details modal component", () => {
   const setIsTripDetailsModalOpen = jest.fn();
-  const todoTrip = {
-    id: 1,
-    title: "Trip title",
-    description: "Trip description",
-    photo_url: "trip-image-url",
-    status: "todo",
-    itinerary: [
-      { day: 1, location: "Location 1", description: "Description 1" },
-      { day: 2, location: "Location 2", description: "Description 2" },
-    ],
-  };
-
-  const doneTrip = {
-    id: 1,
-    title: "Trip title",
-    description: "Trip description",
-    photo_url: "trip-image-url",
-    status: "done",
-    itinerary: [
-      { day: 1, location: "Location 1", description: "Description 1" },
-      { day: 2, location: "Location 2", description: "Description 2" },
-    ],
-  };
+  const todoTrip = filteredTripsMock[0];
+  const doneTrip = filteredTripsMock[1];
   const setData = jest.fn();
 
   it("should render the trip details modal component correctly with status todo", () => {
@@ -43,13 +23,13 @@ describe("Trip details modal component", () => {
     expect(screen.getByRole("close-trip-details-modal")).toBeInTheDocument();
     expect(screen.getByRole("mark-as-completed-button")).toBeInTheDocument();
     expect(screen.getByRole("itinerary-item")).toBeInTheDocument();
-    expect(screen.getByText("Trip title")).toBeInTheDocument();
-    expect(screen.getByText("Trip description")).toBeInTheDocument();
-    expect(screen.getByText("Day 1: Location 1")).toBeInTheDocument();
-    expect(screen.getByText("Day 2: Location 2")).toBeInTheDocument();
+    expect(screen.getByText("Trip 1")).toBeInTheDocument();
     expect(screen.getByText("Description 1")).toBeInTheDocument();
-    expect(screen.getByText("Description 2")).toBeInTheDocument();
-    expect(screen.getByAltText("Trip title")).toBeInTheDocument();
+    expect(screen.getByText("Day 1: Itinerary Location 1")).toBeInTheDocument();
+    expect(screen.getByText("Day 2: Itinerary Location 2")).toBeInTheDocument();
+    expect(screen.getByText("Itinerary description 1")).toBeInTheDocument();
+    expect(screen.getByText("Itinerary description 2")).toBeInTheDocument();
+    expect(screen.getByAltText("Trip 1")).toBeInTheDocument();
   });
 
   it("should render the trip details modal component correctly with status done", () => {
@@ -66,13 +46,13 @@ describe("Trip details modal component", () => {
     expect(screen.getByRole("close-trip-details-modal")).toBeInTheDocument();
     expect(screen.getByRole("mark-as-incomplete-button")).toBeInTheDocument();
     expect(screen.getByRole("itinerary-item")).toBeInTheDocument();
-    expect(screen.getByText("Trip title")).toBeInTheDocument();
-    expect(screen.getByText("Trip description")).toBeInTheDocument();
-    expect(screen.getByText("Day 1: Location 1")).toBeInTheDocument();
-    expect(screen.getByText("Day 2: Location 2")).toBeInTheDocument();
-    expect(screen.getByText("Description 1")).toBeInTheDocument();
+    expect(screen.getByText("Trip 2")).toBeInTheDocument();
     expect(screen.getByText("Description 2")).toBeInTheDocument();
-    expect(screen.getByAltText("Trip title")).toBeInTheDocument();
+    expect(screen.getByText("Day 1: Itinerary Location 1")).toBeInTheDocument();
+    expect(screen.getByText("Day 2: Itinerary Location 2")).toBeInTheDocument();
+    expect(screen.getByText("Itinerary description 1")).toBeInTheDocument();
+    expect(screen.getByText("Itinerary description 2")).toBeInTheDocument();
+    expect(screen.getByAltText("Trip 2")).toBeInTheDocument();
   });
 
   it("should work close button correctly", () => {

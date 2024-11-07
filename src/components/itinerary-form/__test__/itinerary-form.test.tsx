@@ -1,18 +1,11 @@
 import "@testing-library/jest-dom";
 import { ItineraryForm } from "../itinerary-form";
 import { render, screen } from "@testing-library/react";
-import { Trip } from "@/types/trip.type";
+import { filteredTripsMock } from "@/mocks/filtered-trips.mock";
 
 describe("Itinerary form component", () => {
   const setActualTrip = jest.fn();
-  const actualTrip: Trip = {
-    id: 1,
-    title: "Cádiz",
-    description: "A wonderful trip exploring Cádiz.",
-    photo_url: "cadiz-image.jpg",
-    status: "todo",
-    itinerary: [{ day: 1, location: "Cádiz", description: "A wonderful trip exploring Cádiz." }],
-  };
+  const actualTrip = filteredTripsMock[0];
 
   it("should render the itinerary form correctly", () => {
     render(
