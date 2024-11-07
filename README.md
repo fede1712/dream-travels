@@ -18,7 +18,7 @@ git clone https://github.com/fede1712/dream-travels.git
 npm install
 ```
 
-## Running the development server 🚀:
+## Running the App 🚀:
 
 To run the development server 🚀:
 
