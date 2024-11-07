@@ -15,12 +15,13 @@ export const TripsFiltersButtons = ({
   };
 
   return (
-    <div className="flex justify-center">
+    <div className="flex justify-center" role="trips-filters-buttons">
       <button
         className={`rounded-l-full border border-[#D8D8D8] px-4 py-2 hover:bg-[#F3F3F3] ${
           status === "all" ? "bg-black text-white hover:text-black" : ""
         }`}
         onClick={() => handleOnClick("all")}
+        role="show-all-trips-button"
       >
         All
       </button>
@@ -29,6 +30,7 @@ export const TripsFiltersButtons = ({
           status === "todo" ? "bg-black text-white hover:text-black" : ""
         }`}
         onClick={() => handleOnClick("todo")}
+        role="show-todo-trips-button"
       >
         Upcoming
       </button>
@@ -37,6 +39,7 @@ export const TripsFiltersButtons = ({
           status === "done" ? "bg-black text-white hover:text-black" : ""
         }`}
         onClick={() => handleOnClick("done")}
+        role="show-done-trips-button"
       >
         Completed
       </button>

@@ -4,7 +4,10 @@ export const Nav = ({
   setIsCreateTripModalOpen: (isCreateTripModalOpen: boolean) => void;
 }) => {
   return (
-    <nav className="bg-black flex justify-between items-center p-4 rounded-3xl text-white mt-10 mx-10">
+    <nav
+      className="bg-black flex justify-between items-center p-4 rounded-3xl text-white mt-10 mx-10"
+      role="navigation"
+    >
       <div className="rounded-full bg-white p-2 flex items-center justify-between w">
         <svg width="48" height="48" viewBox="0 0 48 48" fill="none" xmlns="http://www.w3.org/2000/svg">
           <rect width="48" height="48" rx="24" fill="white" />

@@ -22,7 +22,10 @@ export const TripDetailsModal = ({
   if (!isTripDetailsModalOpen) return null;
 
   return (
-    <div className="fixed px-2 inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50">
+    <div
+      className="fixed px-2 inset-0 flex items-center justify-center z-50 bg-black bg-opacity-50"
+      role="trip-details-modal"
+    >
       <div className="bg-white rounded-2xl shadow-lg sm:w-7/12 max-h-[90vh] overflow-y-auto my-10">
         <div className="relative">
           <img
@@ -33,6 +36,7 @@ export const TripDetailsModal = ({
           <button
             onClick={() => setIsTripDetailsModalOpen(false)}
             className="rounded-full p-2 text-black absolute top-4 right-4"
+            role="close-trip-details-modal"
           >
             <svg width="28" height="28" viewBox="0 0 28 28" fill="none" xmlns="http://www.w3.org/2000/svg">
               <path
@@ -47,7 +51,7 @@ export const TripDetailsModal = ({
         <div className="flex flex-col gap-5 px-10 py-10">
           <h2 className="text-[32px]">{trip.title}</h2>
           {trip.status === "todo" ? (
-            <button className="flex gap-2 w-fit" onClick={() => changeStatus("done")}>
+            <button className="flex gap-2 w-fit" onClick={() => changeStatus("done")} role="mark-as-completed-button">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <path
                   d="M11.25 14.25L9 12"
@@ -76,7 +80,7 @@ export const TripDetailsModal = ({
               <p className="text-[#898989]">Mark as completed</p>
             </button>
           ) : (
-            <button className="flex gap-2 w-fit" onClick={() => changeStatus("todo")}>
+            <button className="flex gap-2 w-fit" onClick={() => changeStatus("todo")} role="mark-as-incomplete-button">
               <svg width="24" height="24" viewBox="0 0 24 24" fill="none" xmlns="http://www.w3.org/2000/svg">
                 <circle
                   cx="12"
@@ -105,7 +109,7 @@ export const TripDetailsModal = ({
           <div className="max-w-2xl mx-auto p-6">
             <div className="relative">
               <div className="absolute left-[1%] sm:left-[0.5%] top-4 h-[calc(100%-2rem)] border-[0.5px] border-l-2  border-black" />
-              <div className="space-y-8">
+              <div className="space-y-8" role="itinerary-item">
                 {trip.itinerary.map((itinerary: Itinerary, idx: number) => (
                   <div key={idx} className="relative pl-10">
                     <div className="absolute left-0 top-2 h-2 w-2 rounded-full bg-black" />

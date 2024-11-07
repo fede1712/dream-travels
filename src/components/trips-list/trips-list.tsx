@@ -21,7 +21,7 @@ export const TripsList = ({
     <>
       <SearchBar setSearchTerm={setSearchTerm} />
 
-      <div className="flex flex-col gap-10 mt-10">
+      <div className="flex flex-col gap-10 mt-10" role="trips-list">
         <TripsFiltersButtons setStatus={setStatus} status={status} setSearchTerm={setSearchTerm} />
 
         {filteredTrips.map((trip: Trip, idx: number) => (
